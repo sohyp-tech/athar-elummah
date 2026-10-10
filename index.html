@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontsource-amiri-quran/5.3.0/index.css">
+    <link rel="icon" href="./favicon.jpeg" type="image/x-icon" >
+    <title>Athar</title>
+    <style>
+      .bar{height:3px;background:#22332b;border-radius:3px;overflow:hidden;width:100%}
+.bar i{display:block;height:100%;width:0;background:#d9b25f;transition:none}
+.bar i.run{width:100%;transition:width 3s linear}
+    </style>
+</head>
+<body style="overflow: hidden;">
+    <header class="header flex-row">
+
+<img src="./favicon.jpeg" alt="أيقونة موقع أثر" >
+        <div class="header-container flex-col">
+            <h2 class="main-title">أثر</h2>
+            <span class="page-title">الرئيسية</span>
+        </div>
+    </header>
+    <div class="random-thing">
+        <strong class="sayer"></strong>
+        <p class="text"></p>
+    </div>
+    <div class="random-dhekr">
+      <p class=" rand sayer">قال تعالى: &lt;&lt; فاذكروني أذكركم واشكروا لي ولا تكفرون &gt;&gt; </p>
+      <div class="bar"><i id="fill"></i></div>
+    </div>
+    <div class=" quest-answer">
+      <p class="q"></p>
+      <hr>
+      <p class="a"></p>
+    </div>
+    <nav class="menu">
+            <h3 class="quran"><a href="quran.html">قرآن</a></h3>
+            <hr>
+            <h3 class="aqieda"><a href="tafsier.html">تفسير</a></h3>
+            <hr>
+            <h3 class="tafsieer"><a href="ahadieth.html">أحاديث</a></h3>
+            <hr>
+            <h3 class="hadieth"><a href="aaqieda.html">عقيدة</a></h3>
+    </nav>
+    <footer class="footer flex-row">
+        <a href="user.html" link><i class="fa-solid fa-user"></i></a>
+        <a href="community.html" link><i class="fa-solid fa-users"></i></a>
+        <i class="fa-solid fa-bars"></i>
+        <a href="index.html" link><i class="fa-solid fa-house"></i></a>  
+    </footer>
+    <script>
+    const items = [
+  {"قال شيخ الاسلام:  ": "التوحيد الذي جائت به الرسل انما يتضمن اثبات الالوهية لله وحده بان يشهد ان لا اله الا الله: لا يعبد الا اياه, ولا يتوكل الا عليه, ولا يوالي الا له, ولا يعادي الا فيه, ولا يعمل الا لاجله."},
+  {"قال ابن القيم: ": "والنفي المحض ليس توحيدا, وكذلك الاثبات بدون النفي, ولا يكون التوحيد الا متضمنا النفي ولاثبات. وهذا هو حقيقة التوحيد."},
+  {"في الصحيحين من حديث ابن مسعود: ": "قلت يا رسول الله: اي الذنب اعظم عند الله ؟ قال: { ان تجعل لله ندا وهو خلقك }"},
+  {"قال تعالى: ": "{ اولم يرى الانسان انا خلقناه من نطفة فاذا هو خصيم مبين ( 77 ) }"},
+  {"قال تعالى": "إني أخاف إن عصيت ربي عذاب يوم عظيم"},
+  {"قال صلى الله عليه وسلم": "اتق الله حيثما كنت واتبع السيئة الحسنة تمحها, وخالق الناس بخلق حسن"},
+  { "التوحيد في المعرفة والإثبات . . . إثبات ذات الرب والصفات": ""}
+]
+
+const random_dhekr = [
+"لا إله إلا الله",
+"سبحان الله وبحمده . . . سبحان الله العظيم",
+"لا إله إلا الله وحده لا شريك له , له الملك وله الحمد وهو على كل شيء قدير",
+"اللهم صل على نبينا محمد وعلى آله وصحبه وسلم",
+"استغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه",
+"الله أكبر",
+"لا حول ولا قوة إلا بالله"
+]
+
+let quest_answer = [
+  {"q":"من أول من آمن من الصبيان ؟","a": "سيدنا على رضي الله عنه"},
+  {"q":"ما هي اطول آية في القرآن ؟","a": "آية الدين و تسمى آية المداينة وهي في سورة البقرة"},
+  {"q":"ما هي مراتب التوحيد ؟","a": "توحيد وجود الله, ثم توحيد ربوبية الله , ثم توحيد ألوهية الله, وتوحيد الأسماء والصفات"},
+  {"q":"من الذين يدخلون الجنة بغير حساب ؟","a": " قال صلى الله عليه وسلم «هُمُ الَّذِينَ لا يَسْتَرْقُونَ وَلا يَتَطَيَّرُونَ وَلا يَكْتَوُونَ وَعَلَى رَبِّهِمْ يَتَوَكَّلُونَ»"},
+  {"q":"ما هي اعظم سورة في القرآن ؟","a": "اعظم سورة في القرآن هي: سورة الفاتحة"},
+  {"q":"ما معنى لا إله إلا الله ؟","a": "لا معبود بحق إلا الله وحده"},
+  {"q":"ما معنى البدعة ؟","a": "امر يخالف شرع الله بزعم انه تقرب اليه سبحانه: كالحتفال بمولد النبي < ص > او بليلة اﻹسراء والمعراج."}
+]
+
+let index = Math.floor(Math.random() * quest_answer.length);
+
+let quest = Object.values(quest_answer[index])[0];
+let answer = Object.values(quest_answer[index])[1];
+
+document.querySelector(".q").textContent = quest;
+document.querySelector(".a").textContent = answer;
+
+let i = Math.floor(Math.random() * items.length);
+let item = items[i];
+
+let sayer = Object.keys(item)[0];
+let text = Object.values(item)[0];
+
+document.querySelector(".sayer").textContent = sayer;
+document.querySelector(".text").textContent = text;
+
+const fill = document.querySelector("#fill")
+fill.className = ""
+    fill.offsetWidth
+    fill.className = "run"
+
+setInterval( () => {
+  let is = Math.floor(Math.random() * random_dhekr.length);
+  document.querySelector(".rand").textContent = random_dhekr[is]
+  document.querySelector(".random-dhekr").style.textShadow = "0 0 30px var(--main-text)"
+const fill = document.querySelector("#fill")
+fill.className = ""
+    fill.offsetWidth
+    fill.className = "run"
+  setTimeout(() => {
+     document.querySelector(".random-dhekr").style.textShadow = "0 0 0 var(--gold)"
+     document.querySelector(".random-dhekr").style.transform = "scale(1)"
+      }, 500)
+},5000)
+
+setInterval( () => {
+  document.querySelector(".random-dhekr").style.boxShadow = "0 0 25px var(--nfea)"
+  setTimeout(() => { document.querySelector(".random-dhekr").style.boxShadow = "0 0 0 var(--card)" }, 500)
+},1000)
+
+let clicked = false;
+
+document.querySelector(".fa-bars").onclick = () => {
+  const menu = document.querySelector(".menu");
+    if (!clicked) {
+      menu.setAttribute("style", "pointer-events: auto;opacity: 1;");
+      clicked = true;
+    } else {
+      menu.setAttribute("style", "opacity: 0;pointer-events: none;");
+      clicked = false;
+    }
+};
+
+    </script>
+</body>
+</html>
