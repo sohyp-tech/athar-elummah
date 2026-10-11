@@ -231,7 +231,7 @@ box-align: center;
     margin: 10px;
 }
 
-.signin {
+.signin , .update-login-data{
     direction: ltr;
     width: 45%;
     height: 45px;
@@ -244,7 +244,7 @@ box-align: center;
     transition: .2s;
 }
 
-.signin:hover {
+.signin:hover, .update-login-data:hover {
     cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 0 5px var(--nfea);
@@ -575,7 +575,7 @@ font-weight: 400;
 @media   (max-width: 600px) {
    
 
-.signin {
+.signin, .update-login-data {
     direction: ltr;
     width: 75%;
     height: 45px;
@@ -589,7 +589,7 @@ font-weight: 400;
     font-size: 16px;
 }
 
-.signin:hover {
+.signin:hover , .update-login-data:hover {
     cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 0 5px var(--nfea);

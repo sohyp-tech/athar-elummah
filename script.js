@@ -61,7 +61,7 @@ if (window.location.pathname.endsWith("user.html")) {
         </header>
         <div class="container flex-col">
           <div class="img flex-col">${data.name.split("")[0]}</div>
-          <h3 class="user_page_user_name">${data.name} <a href="login.html"> <i class="fa-solid fa-pen"></i></a></h3>
+          <h3 class="user_page_user_name">${data.name} <a href="edit.html"> <i class="fa-solid fa-pen"></i></a></h3>
         </div>
         <nav class="menu">
             <h3 class="quran"><a href="quran.html">قرآن</a></h3>
@@ -86,6 +86,67 @@ if (window.location.pathname.endsWith("user.html")) {
     window.location.href = "login.html";
   }
 }
+
+
+if (window.location.pathname.endsWith("edit.html")) {
+  const nameInput = document.querySelector(".user_name_input");
+  const idInput = document.querySelector(".user_id_input");
+  const updateBtn = document.querySelector(".update-login-data");
+  const savedId = localStorage.getItem("id");
+  const savedName = localStorage.getItem("user_name");
+
+  if (!savedId || savedId === "null" || !savedName) {
+    window.location.href = "login.html";
+  } else {
+    nameInput.value = savedName;
+    idInput.value = savedId;
+    idInput.readOnly = true;
+
+    updateBtn.onclick = () => {
+      const newName = nameInput.value.trim();
+      const userId = parseInt(savedId);
+
+      if (!newName) {
+        alert("اكتب اسم صحيح");
+        return;
+      }
+
+      if (isNaN(userId)) {
+        alert("الـ ID غير صالح");
+        return;
+      }
+
+      fetch("https://sohyp.pythonanywhere.com/login_user/update", {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({
+          user_name: newName,
+          user_id: userId
+        })
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(err => Promise.reject(err));
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data.error) {
+          alert("خطأ: " + data.error);
+          return;
+        }
+        localStorage.setItem("user_name", newName);
+        alert("تم التعديل بنجاح ✅");
+        window.location.href = "user.html";
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        alert("حصلت مشكلة: " + (err.error || err.message || "unknown"));
+      });
+    };
+  }
+}
+
 
 if ( uploadButton && postInput ) {
   uploadButton.onclick = () => {
