@@ -235,17 +235,19 @@ function goSurah(surahNum) {
           `
           document.querySelector(".ayah-container").innerHTML = `
           ${selectedSurah.ayahs.map(
-            (ayah) => `
-                <p>${ayah.text}
+            (ayah) => {
+              const cleanText = ayah.text.replace(/\u06E2/g, '');
+              return `
+                <p>${cleanText}
                 <span class="flex-col">${ayah.numberInSurah}</span></p>
-            `
+            `;
+            }
           )
           .join('')}
           `
         })
         .catch(err => alert(err));
 }
-
 if (window.location.pathname.endsWith("tafsier.html")) {
   const searchBtn = document.querySelector(".serarc-now")
   const keywordInput = document.querySelector(".surah-num")
