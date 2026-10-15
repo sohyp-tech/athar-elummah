@@ -136,7 +136,6 @@ if (window.location.pathname.endsWith("edit.html")) {
           return;
         }
         localStorage.setItem("user_name", newName);
-        alert("تم التعديل بنجاح ✅");
         window.location.href = "user.html";
       })
       .catch(err => {
@@ -293,14 +292,13 @@ if (window.location.pathname.endsWith("tafsier.html")) {
 }
 
 if (window.location.pathname.endsWith("ahadieth.html")) {
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 60; i++) {
     fetch(`https://ummahapi.com/api/hadith/bukhari/${i}`)
     .then( res => res.json() )
     .then(data => {document.getElementById("ahadieth").innerHTML += `
     <div class="card">
     <p class="hadith">${data.data.arabic}</p>
     <strong style="color: var(--second-text);font-size: 22px;">رواه البخاري</strong>
-    <hr />
     </div>
     `})
     .catch(err => console.error(err))
@@ -310,7 +308,6 @@ if (window.location.pathname.endsWith("ahadieth.html")) {
     <div class="card">
     <p class="hadith">${data.data.arabic}</p>
     <strong style="color: var(--second-text);font-size: 22px;">رواه مسلم</strong>
-    <hr />
     </div>
     `})
     .catch(err => console.error(err))

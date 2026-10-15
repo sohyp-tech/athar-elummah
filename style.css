@@ -59,7 +59,7 @@ body {
 
 i {
     color: var(--main-text);
-    font-size: 23px;
+    font-size: 25px;
     transition: .2s;
     cursor: pointer;
 }
@@ -68,6 +68,15 @@ i:hover {
     color: var(--gold);
 }
 
+.card {
+    margin-bottom: 20px;
+    border: 1.5px solid #eedab870;
+    border-radius: 10px;
+    padding: 7px;
+    background-color: #19251fa2;
+    box-shadow: 0 0 5px #324d40;
+    font-weight: 100;
+}
 .flex-col {
     display: flex;
     justify-content: center;
@@ -174,8 +183,8 @@ box-align: center;
     text-align: right;
     font-size: 18px;
     direction: rtl;
-    width: 200px;
-    height: auto;
+    width: 300px;
+    height: 250px;
     padding: 1px;
     border-radius: 10px;
     border: 1px solid var(--borders);
@@ -184,9 +193,9 @@ box-align: center;
     transition: .4s;
     text-decoration: none;
     position: absolute;
-    top: 50%;
+    top: 48%;
     right: 50%;
-    transform: translate(50%);
+    transform: translate(50%, 48%);
     z-index: 99999;
     pointer-events: none;
 }
@@ -400,15 +409,17 @@ box-align: center;
 }
 
 .back {
-    padding: 10px;
+    padding: 4px;
     text-decoration: none;
+    width: 70px;
     color: var(--main-text);
     background: var(--footer);
     border-radius: 10px;
     border: 1px solid var(--borders);
     position: fixed;
-    right: 5px;
-    top: 1px;
+    right: 3px;
+    top: 50px;
+    text-align: center;
 }
 
 .surah-num {
@@ -534,7 +545,8 @@ overflow-y: scroll;
     width: 100%;
 }
 .ayah-container p:hover {
-    background-color:  rgba(241, 235, 200, 0.493);
+    background-color:  rgba(41, 59, 48, 0.493);
+    color: #fbd468;
     height: auto;
     padding: 1px;
 }
@@ -572,7 +584,7 @@ color: rgb(255, 246, 246);
 font-weight: 400;
 }
 
-@media   (max-width: 600px) {
+@media   (max-width: 600px) and (max-height: 800px){
    
 
 .signin, .update-login-data {
@@ -666,6 +678,7 @@ overflow-y: scroll;
     width: 98%;
     padding: 10px;
     position: absolute;
+    top: 32%;
 margin: 27% auto;
 display: flex;
     justify-content: center;
@@ -731,6 +744,20 @@ box-align: center;
         text-align: right;
         font-size: 21px;
         direction: rtl;
+    }
+    .back {
+        padding: 1px;
+    text-decoration: none;
+    width: 70px;
+    height: 60px;
+    color: var(--main-text);
+    background: var(--footer);
+    border-radius: 10px;
+    border: 1px solid var(--borders);
+    position: fixed;
+    right: 3px;
+    top: 0px;
+    text-align: center;
     }
     img {
         border: 0;
