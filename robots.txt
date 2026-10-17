@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /quran.html
+Allow: /tafsier.html
+Allow: /ahadieth.html
+Allow: /community.html
+
+Disallow: /edit.html
+Disallow: /user.html
+
+Sitemap: https://sohyp-tech.github.io/sitemap.xml
